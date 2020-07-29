@@ -26,7 +26,7 @@ SECRET_KEY = '^n62lkzqkps27!mv8fo_ge-ki4z87k!ie13davca@q+d&qfjfp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['js-qr-test.herokuapp.com']
 
 
 # Application definition
