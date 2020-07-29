@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%block content%}    
+<video id="preview"></video>
+
+<form method = "POST" id="dataform">
+  {%csrf_token%}
+  <input type="text" name="data" id="somedata">
+</form>
+<script type="text/javascript">
+  let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+  scanner.addListener('scan', function (content) {
+    data = content
+    document.getElementById("somedata").value = content;
+    document.getElementById("dataform").submit();
+      });
+  Instascan.Camera.getCameras().then(function (cameras) {
+    if (cameras.length > 0) {
+      scanner.start(cameras[0]);
+    } else {
+      console.error('No cameras found.');
+    }
+  }).catch(function (e) {
+    console.error(e);
+  });
+</script>
+{%endblock%}
